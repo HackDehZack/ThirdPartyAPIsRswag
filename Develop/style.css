@@ -1,4 +1,37 @@
+
+
 body {
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+  background: url('STARS23.png') no-repeat center center fixed;
+  background-size: cover; 
+  filter: brightness(1);
+  animation: starsAnimation 50s linear infinite;
+}
+
+@keyframes starsAnimation {
+  0% {
+    background-position: 10 50;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+body {
+  background-color: #2ce0f8;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
@@ -21,12 +54,20 @@ textarea {
 }
 
 .row {
+  display: flex;
+  align-items: stretch;
   border-top: 1px solid white;
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-image: linear-gradient(to bottom, #7515ce, #8b0000);
   border-top: 1px dashed #000000;
 }
 
@@ -41,7 +82,7 @@ textarea {
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #2a076b;
   color: white;
 }
 
@@ -49,11 +90,13 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: #b31b1b;
   color: white;
+  background-image: linear-gradient(to bottom, #b31b1b, #8b0000);
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(to bottom, #8b0000, #b31b1b);
 }
