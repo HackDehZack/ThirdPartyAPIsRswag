@@ -17,7 +17,7 @@ body::before {
   background: url('STARS23.png') no-repeat center center fixed;
   background-size: cover; 
   filter: brightness(1);
-  animation: starsAnimation 50s linear infinite;
+  animation: starsAnimation 10s linear infinite;
 }
 
 @keyframes starsAnimation {
