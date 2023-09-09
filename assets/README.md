@@ -3,6 +3,7 @@ Work Day Scheduler
 A simple calendar app for scheduling your work day.
 
 Deployed link: https://hackdehzack.github.io/ThirdPartyAPIsRswag/
+Screenshot of deployed application in in "Screenshot (7).png
 
 Description
 The Work Day Scheduler is a web application that allows you to schedule and manage your tasks throughout the work day. It provides a clean and user-friendly interface where you can enter and save tasks for different hours of the day.
