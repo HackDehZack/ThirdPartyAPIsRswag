@@ -27,12 +27,7 @@ $(function () {
     $(this).find(".description").val(savedInput);
   });
 
-
-
-
-
-
-  
-
-  // TODO: Add code to display the current date in the header of the page.
+// Display the current date in the header of the page
+var currentDate = dayjs().format("dddd, MMMM D, YYYY");
+$("#currentDay").text(currentDate);
 });
