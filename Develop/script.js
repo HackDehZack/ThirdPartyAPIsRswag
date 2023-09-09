@@ -1,15 +1,36 @@
 $(function () {
+  // Function to save the schedule data to localStorage
+  function saveSchedule() {
+    var scheduleData = {};
+    $(".time-block").each(function () {
+      var timeBlockId = $(this).attr("id");
+      var userInput = $(this).find(".description").val();
+      scheduleData[timeBlockId] = userInput;
+    });
+    localStorage.setItem("schedule", JSON.stringify(scheduleData));
+  }
+
   // Add a listener for click events on the save button
   $(document).on("click", ".saveBtn", function() {
-    var timeBlockId = $(this).closest(".time-block").attr("id");
-    var userInput = $(this).siblings(".description").val();
-    localStorage.setItem(timeBlockId, userInput);
+    saveSchedule();
   });
 
+  // Function to load the schedule data from localStorage
+  function loadSchedule() {
+    var scheduleData = JSON.parse(localStorage.getItem("schedule"));
+
+    if (scheduleData) {
+      $(".time-block").each(function () {
+        var timeBlockId = $(this).attr("id");
+        var savedInput = scheduleData[timeBlockId];
+        $(this).find(".description").val(savedInput);
+      });
+    }
+  }
 
   // Apply the past, present, or future class to each time block
   var currentHour = dayjs().format("H");
-  $(".time-block").each(function() {
+  $(".time-block").each(function () {
     var timeBlockHour = parseInt($(this).attr("id").split("-")[1]);
     if (timeBlockHour < currentHour) {
       $(this).addClass("past");
@@ -20,14 +41,10 @@ $(function () {
     }
   });
 
-   // Get user input from local storage and set the values
-   $(".time-block").each(function() {
-    var timeBlockId = $(this).attr("id");
-    var savedInput = localStorage.getItem(timeBlockId);
-    $(this).find(".description").val(savedInput);
-  });
+  // Call the loadSchedule function when the page is loaded
+  loadSchedule();
 
-// Display the current date in the header of the page
-var currentDate = dayjs().format("dddd, MMMM D, YYYY");
-$("#currentDay").text(currentDate);
+  // Display the current date in the header of the page
+  var currentDate = dayjs().format("dddd, MMMM D, YYYY");
+  $("#currentDay").text(currentDate);
 });
